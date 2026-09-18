@@ -1,0 +1,551 @@
+<title>暇72 ひまなつ</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Shippori+Mincho+B1:wght@600;800&family=Zen+Kaku+Gothic+New:wght@400;500;700&family=Oswald:wght@400;500;600&display=swap">
+<style>
+  :root {
+    --crimson:      #911818;
+    --crimson-deep: #630E0E;
+    --crimson-lift: #D2564A;
+    --gold:         #B8862B;
+
+    --bg:        #F7F2F1;
+    --surface:   #FFFFFF;
+    --surface-2: #F1E8E7;
+    --ink:       #241819;
+    --ink-soft:  #6E5757;
+    --line:      #E2D3D2;
+
+    --accent-text: var(--crimson);
+    --on-crimson:  #FBF1EF;
+
+    --font-display: "Shippori Mincho B1", "Hiragino Mincho ProN", "Yu Mincho", serif;
+    --font-body: "Zen Kaku Gothic New", "Hiragino Sans", "Noto Sans JP", sans-serif;
+    --font-util: "Oswald", "Zen Kaku Gothic New", sans-serif;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg:        #140C0C;
+      --surface:   #1D1213;
+      --surface-2: #26181A;
+      --ink:       #F2E7E6;
+      --ink-soft:  #AF9897;
+      --line:      #3B2426;
+      --accent-text: var(--crimson-lift);
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg:        #140C0C;
+    --surface:   #1D1213;
+    --surface-2: #26181A;
+    --ink:       #F2E7E6;
+    --ink-soft:  #AF9897;
+    --line:      #3B2426;
+    --accent-text: var(--crimson-lift);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--font-body);
+    font-size: 16px;
+    line-height: 1.85;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .page { max-width: 980px; margin: 0 auto; padding-inline: 20px; padding-block: 0 0; }
+
+  a { color: var(--accent-text); text-underline-offset: 3px; text-decoration-thickness: 1px; }
+  a:focus-visible, .pill:focus-visible { outline: 2px solid var(--accent-text); outline-offset: 3px; border-radius: 2px; }
+
+  /* ---------- hero ---------- */
+  .hero {
+    position: relative;
+    overflow: hidden;
+    margin-inline: -20px;
+    padding: 56px 20px 48px;
+    background:
+      radial-gradient(120% 90% at 18% 0%, #A81D1D 0%, var(--crimson) 42%, var(--crimson-deep) 100%);
+    color: var(--on-crimson);
+  }
+  .hero__ghost {
+    position: absolute;
+    right: -0.08em; bottom: -0.34em;
+    font-family: var(--font-util);
+    font-weight: 600;
+    font-size: clamp(11rem, 34vw, 21rem);
+    line-height: 0.8;
+    color: #FFFFFF;
+    opacity: 0.075;
+    pointer-events: none;
+    user-select: none;
+  }
+  .hero__inner { position: relative; display: flex; gap: 32px; align-items: flex-end; }
+  .hero__main { flex: 1 1 auto; min-width: 0; }
+
+  .eyebrow {
+    font-family: var(--font-util);
+    font-size: 0.8rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--on-crimson);
+    opacity: 0.82;
+    margin: 0 0 14px;
+  }
+  .eyebrow .sep { opacity: 0.5; margin-inline: 0.6em; }
+
+  .hero h1 {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: clamp(3.4rem, 15vw, 6.6rem);
+    line-height: 0.95;
+    letter-spacing: 0.02em;
+    margin: 0;
+    text-wrap: balance;
+  }
+  .hero__yomi {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: clamp(1rem, 4vw, 1.3rem);
+    letter-spacing: 0.34em;
+    opacity: 0.86;
+    margin: 10px 0 0;
+  }
+  .hero__role {
+    margin: 22px 0 0;
+    font-size: clamp(0.95rem, 3.4vw, 1.12rem);
+    font-weight: 500;
+    line-height: 1.7;
+  }
+  .hero__fm {
+    display: inline-flex; align-items: center; gap: 8px;
+    margin-top: 20px; padding: 5px 14px 5px 11px;
+    border: 1px solid rgba(251,241,239,0.45);
+    border-radius: 999px;
+    font-family: var(--font-util);
+    font-size: 0.82rem; letter-spacing: 0.14em;
+  }
+  .hero__vertical {
+    display: none;
+    writing-mode: vertical-rl;
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 1.2rem;
+    letter-spacing: 0.2em;
+    line-height: 2;
+    max-height: 250px;
+    margin: 0;
+    padding-left: 20px;
+    border-left: 1px solid rgba(251,241,239,0.35);
+    opacity: 0.95;
+  }
+  @media (min-width: 880px) {
+    .hero { padding: 76px 20px 64px; }
+    .hero__vertical { display: block; }
+  }
+
+  .lede {
+    margin: 0;
+    padding: 30px 0 4px;
+    font-size: clamp(1.02rem, 3.2vw, 1.16rem);
+    line-height: 2;
+    color: var(--ink);
+    max-width: 40em;
+  }
+
+  /* ---------- sections ---------- */
+  section { padding-block: 46px; border-top: 1px solid var(--line); }
+  section:first-of-type { border-top: 0; }
+
+  .sec-head { display: flex; align-items: baseline; gap: 14px; flex-wrap: wrap; margin-bottom: 26px; }
+  .sec-head h2 {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: clamp(1.45rem, 5.2vw, 1.95rem);
+    letter-spacing: 0.06em;
+    line-height: 1.4;
+    margin: 0;
+    text-wrap: balance;
+  }
+  .sec-head .en {
+    font-family: var(--font-util);
+    font-size: 0.74rem;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+  }
+  .sec-head h2::before {
+    content: "";
+    display: inline-block;
+    width: 0.42em; height: 0.42em;
+    margin-inline-end: 0.52em;
+    background: var(--crimson);
+    transform: rotate(45deg) translateY(-0.12em);
+  }
+
+  /* ---------- profile ---------- */
+  .profile {
+    display: grid;
+    grid-template-columns: max-content 1fr;
+    gap: 0;
+    margin: 0;
+    font-variant-numeric: tabular-nums;
+  }
+  .profile dt {
+    font-family: var(--font-util);
+    font-size: 0.8rem;
+    letter-spacing: 0.14em;
+    color: var(--ink-soft);
+    padding: 13px 22px 13px 0;
+    border-bottom: 1px solid var(--line);
+    white-space: nowrap;
+  }
+  .profile dd {
+    margin: 0;
+    padding: 13px 0;
+    border-bottom: 1px solid var(--line);
+    font-weight: 500;
+  }
+  .swatch {
+    display: inline-block;
+    width: 0.85em; height: 0.85em;
+    background: var(--crimson);
+    border-radius: 2px;
+    margin-inline-end: 0.5em;
+    vertical-align: -0.06em;
+  }
+  .mono { font-family: var(--font-util); letter-spacing: 0.06em; }
+  @media (max-width: 440px) {
+    .profile { grid-template-columns: 1fr; }
+    .profile dt { padding-block: 12px 0; border-bottom: 0; }
+    .profile dd { padding-block: 0 12px; }
+  }
+
+  /* ---------- weapons ---------- */
+  .weapons { display: grid; grid-template-columns: repeat(auto-fit, minmax(258px, 1fr)); gap: 18px; }
+  .weapon {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-top: 3px solid var(--crimson);
+    padding: 24px 22px 26px;
+    display: flex; flex-direction: column; gap: 12px;
+  }
+  .weapon h3 {
+    font-family: var(--font-display);
+    font-weight: 800; font-size: 1.24rem; letter-spacing: 0.08em;
+    margin: 0;
+  }
+  .weapon .kicker {
+    font-family: var(--font-util);
+    font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--accent-text);
+    margin: 0;
+  }
+  .weapon p { margin: 0; font-size: 0.95rem; line-height: 1.9; color: var(--ink); }
+  .weapon ul { margin: 0; padding-inline-start: 1.1em; font-size: 0.9rem; color: var(--ink-soft); line-height: 1.85; }
+
+  /* ---------- quotes ---------- */
+  .quotes { display: flex; flex-direction: column; gap: 22px; }
+  figure.q {
+    margin: 0;
+    padding: 4px 0 4px 22px;
+    border-inline-start: 3px solid var(--crimson);
+  }
+  figure.q blockquote {
+    margin: 0;
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: clamp(1.02rem, 3.3vw, 1.18rem);
+    line-height: 1.95;
+    text-wrap: pretty;
+  }
+  figure.q figcaption {
+    margin-top: 10px;
+    font-family: var(--font-util);
+    font-size: 0.76rem;
+    letter-spacing: 0.12em;
+    color: var(--ink-soft);
+  }
+  .note {
+    margin: 22px 0 0;
+    padding: 14px 16px;
+    background: var(--surface-2);
+    font-size: 0.84rem;
+    line-height: 1.8;
+    color: var(--ink-soft);
+  }
+
+  /* ---------- timeline ---------- */
+  ol.timeline { list-style: none; margin: 0; padding: 0 0 0 26px; position: relative; }
+  ol.timeline::before {
+    content: ""; position: absolute; inset-block: 8px 8px; inset-inline-start: 4px;
+    width: 1px; background: var(--line);
+  }
+  ol.timeline li { position: relative; padding-bottom: 26px; }
+  ol.timeline li:last-child { padding-bottom: 0; }
+  ol.timeline li::before {
+    content: ""; position: absolute;
+    inset-inline-start: -26px; top: 0.62em;
+    width: 9px; height: 9px;
+    background: var(--crimson);
+    border-radius: 50%;
+  }
+  .tl-date {
+    display: block;
+    font-family: var(--font-util);
+    font-size: 0.82rem; letter-spacing: 0.14em;
+    color: var(--accent-text);
+    font-variant-numeric: tabular-nums;
+  }
+  .tl-body { margin: 2px 0 0; font-size: 0.97rem; line-height: 1.85; }
+  .tl-body strong { font-weight: 700; }
+
+  /* ---------- links ---------- */
+  .pills { display: flex; flex-wrap: wrap; gap: 10px; padding: 0; margin: 0; list-style: none; }
+  .pill {
+    display: inline-flex; align-items: baseline; gap: 9px;
+    padding: 9px 17px;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    background: var(--surface);
+    color: var(--ink);
+    text-decoration: none;
+    font-size: 0.92rem;
+    transition: border-color 0.18s ease, color 0.18s ease, background 0.18s ease;
+  }
+  .pill:hover { border-color: var(--crimson); color: var(--accent-text); background: var(--surface-2); }
+  .pill .handle { font-family: var(--font-util); font-size: 0.78rem; letter-spacing: 0.08em; color: var(--ink-soft); }
+  .pill:hover .handle { color: var(--accent-text); }
+
+  .tags { display: flex; flex-wrap: wrap; gap: 8px 10px; padding: 0; margin: 24px 0 0; list-style: none; }
+  .tag {
+    font-family: var(--font-util);
+    font-size: 0.86rem; letter-spacing: 0.06em;
+    padding: 5px 12px;
+    background: var(--crimson);
+    color: var(--on-crimson);
+    border-radius: 3px;
+  }
+  .tag small { display: block; font-family: var(--font-body); font-size: 0.68rem; letter-spacing: 0.04em; opacity: 0.82; line-height: 1.5; }
+
+  /* ---------- footer ---------- */
+  footer {
+    margin-inline: -20px;
+    margin-top: 40px;
+    padding: 32px 20px 40px;
+    background: var(--surface-2);
+    border-top: 3px solid var(--crimson);
+    font-size: 0.82rem;
+    line-height: 1.9;
+    color: var(--ink-soft);
+  }
+  footer h2 {
+    font-family: var(--font-util);
+    font-size: 0.76rem; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--ink-soft);
+    margin: 0 0 10px;
+  }
+  footer ul { margin: 0 0 20px; padding-inline-start: 1.2em; }
+  footer li { margin-bottom: 3px; }
+  footer p { margin: 0 0 10px; max-width: 52em; }
+
+  @media (prefers-reduced-motion: reduce) {
+    * { transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; }
+  }
+</style>
+
+<div class="page">
+
+  <header class="hero">
+    <div class="hero__ghost" aria-hidden="true">72</div>
+    <div class="hero__inner">
+      <div class="hero__main">
+        <p class="eyebrow">SIXFONIA<span class="sep">/</span>RED</p>
+        <h1>暇72</h1>
+        <p class="hero__yomi">ひまなつ</p>
+        <p class="hero__role">声真似ゲーマー歌い手VTuber。<br>6人組2.5次元タレントグループ「シクフォニ」の赤担当。</p>
+        <div class="hero__fm"><span aria-hidden="true">🍍</span> FAN MARK</div>
+      </div>
+      <p class="hero__vertical" aria-hidden="true">声真似も、<br>歌も、悪ノリも。</p>
+    </div>
+  </header>
+
+  <p class="lede">
+    ネットでの活動歴はシクフォニ随一。2013年ごろから声真似で名を上げ、2022年にグループの赤を背負った。
+    キャラクターの声をそのまま持ってこられる器用さと、歌に全部乗せてくる熱量。その両方を同じ喉から出してくる人。
+  </p>
+
+  <section aria-labelledby="h-profile">
+    <div class="sec-head">
+      <h2 id="h-profile">プロフィール</h2>
+      <span class="en">Profile</span>
+    </div>
+    <dl class="profile">
+      <dt>名前</dt><dd>暇72（ひまなつ）</dd>
+      <dt>誕生日</dt><dd>2月9日</dd>
+      <dt>身長</dt><dd>170cm</dd>
+      <dt>血液型</dt><dd>A型</dd>
+      <dt>メンバーカラー</dt><dd><span class="swatch" aria-hidden="true"></span>赤 <span class="mono">#911818</span></dd>
+      <dt>ファンマーク</dt><dd>🍍</dd>
+      <dt>肩書き</dt><dd>声真似ゲーマー歌い手VTuber</dd>
+      <dt>所属</dt><dd>シクフォニ（2022年8月12日結成／6人組）</dd>
+      <dt>活動歴</dt><dd>2013年ごろ〜（YouTubeチャンネル開設は2014年1月）</dd>
+      <dt>チャンネル</dt><dd>登録者 約47.5万人／総再生 3.1億回超</dd>
+    </dl>
+  </section>
+
+  <section aria-labelledby="h-arms">
+    <div class="sec-head">
+      <h2 id="h-arms">三本の武器</h2>
+      <span class="en">What he does</span>
+    </div>
+    <div class="weapons">
+      <article class="weapon">
+        <p class="kicker">01 — Voice</p>
+        <h3>声真似</h3>
+        <p>最大の武器にして入口。レパートリーが広く、同じ声優が演じるキャラを横断できるのが強み。</p>
+        <ul>
+          <li>沖田総悟（銀魂）</li>
+          <li>伊黒小芭内（鬼滅の刃）</li>
+          <li>イヤミ／ダヨーン／デカパン（おそ松さん）</li>
+        </ul>
+      </article>
+      <article class="weapon">
+        <p class="kicker">02 — Song</p>
+        <h3>歌</h3>
+        <p>投稿ペースは多くない。そのぶん一本にかける熱量が高く、声真似で培った表現力がそのまま歌に乗る。</p>
+        <ul>
+          <li>「はいよろこんで」</li>
+          <li>「祝福」</li>
+          <li>「Overdose」</li>
+          <li>「鬼ノ宴」</li>
+        </ul>
+      </article>
+      <article class="weapon">
+        <p class="kicker">03 — Play</p>
+        <h3>ゲーム・配信</h3>
+        <p>マインクラフトが主戦場。肝試し、腕試し、参加型と企画ものに強い。告知の煽りが毎回うるさくて楽しい。</p>
+        <ul>
+          <li>マイクラ肝試し／腕試し</li>
+          <li>トモコレ実況</li>
+          <li>ツイキャス雑談</li>
+          <li>リア友との怪異ロケ</li>
+        </ul>
+      </article>
+    </div>
+  </section>
+
+  <section aria-labelledby="h-words">
+    <div class="sec-head">
+      <h2 id="h-words">本人の言葉</h2>
+      <span class="en">In his words</span>
+    </div>
+    <div class="quotes">
+      <figure class="q">
+        <blockquote>「『RAGE』を通して、"俺たちこういう怒りを抱いて活動してきて、ここまで頑張ってきたんだな"というのを再確認することができたと思います」</blockquote>
+        <figcaption>2ndシングル『RAGE』インタビュー（YOUTH TIME JAPAN project／2026年4月）</figcaption>
+      </figure>
+      <figure class="q">
+        <blockquote>バズったわけじゃないから、一歩ずつ、活動している規模に見合う人間になってきている。<br>前より、思ってることを言いやすくなった。</blockquote>
+        <figcaption>デビュー3周年インタビュー（サンケイスポーツ）より要旨</figcaption>
+      </figure>
+      <figure class="q">
+        <blockquote>「やりたいことは色々あるけど、ありすぎて動けないから一旦寝る。」を72年間繰り返した男</blockquote>
+        <figcaption>本人のポスト（自虐）より</figcaption>
+      </figure>
+      <figure class="q">
+        <blockquote>ヘイトは俺に向けて、仲良くしてください。</blockquote>
+        <figcaption>リスナー間の空気を気にしたときのポストより要旨</figcaption>
+      </figure>
+    </div>
+    <p class="note">
+      顔出しについては「顔を出したくないし、目立ちたくもない」と明言。尖ったグループの急先鋒として悪ノリを引っ張る一方、
+      場が荒れれば自分から仲裁に入る。この振れ幅がそのまま人柄だと思う。
+    </p>
+  </section>
+
+  <section aria-labelledby="h-timeline">
+    <div class="sec-head">
+      <h2 id="h-timeline">ここまでの道のり</h2>
+      <span class="en">Timeline</span>
+    </div>
+    <ol class="timeline">
+      <li>
+        <span class="tl-date">2013 — 2014</span>
+        <p class="tl-body">個人での活動をスタート。声真似動画を軸に、YouTubeチャンネルを2014年1月に開設。</p>
+      </li>
+      <li>
+        <span class="tl-date">2022.08.12</span>
+        <p class="tl-body">オーディション『Project Nova Create』を経て <strong>シクフォニ結成</strong>。赤担当に。グループ名は SIX＋SINFONIA の造語。</p>
+      </li>
+      <li>
+        <span class="tl-date">2022.10 — 2024.07</span>
+        <p class="tl-body">歌い手事務所「VOISING」に所属。2024年7月にグループの意向で卒業。</p>
+      </li>
+      <li>
+        <span class="tl-date">2025.08</span>
+        <p class="tl-body">デビュー<strong>3周年</strong>。記念グッズ展開、スポーツ紙初インタビューなど活動が一段広がる。</p>
+      </li>
+      <li>
+        <span class="tl-date">2026.04.08</span>
+        <p class="tl-body">2ndシングル<strong>『RAGE』</strong>発売。4月10日からは全国約600校の高校で校内放送も実施。</p>
+      </li>
+      <li>
+        <span class="tl-date">2026.04.25 — 05.06</span>
+        <p class="tl-body"><strong>SIXFONIA 2nd Live Tour -RAGE-</strong>。福岡国際センター／ゼビオアリーナ仙台／Kアリーナ横浜の3都市6公演を、約5万人動員で完走。</p>
+      </li>
+      <li>
+        <span class="tl-date">2026.10.17 — 10.18</span>
+        <p class="tl-body">ぴあアリーナMM公演を予定。</p>
+      </li>
+    </ol>
+  </section>
+
+  <section aria-labelledby="h-links">
+    <div class="sec-head">
+      <h2 id="h-links">追いかけるなら</h2>
+      <span class="en">Where to find him</span>
+    </div>
+    <ul class="pills">
+      <li><a class="pill" href="https://x.com/hima72_25">X（メイン）<span class="handle">@hima72_25</span></a></li>
+      <li><a class="pill" href="https://x.com/hima72_2nd">X（サブ）<span class="handle">@hima72_2nd</span></a></li>
+      <li><a class="pill" href="https://www.youtube.com/@hima72">YouTube<span class="handle">@hima72</span></a></li>
+      <li><a class="pill" href="https://twitcasting.tv/hima72_25">ツイキャス<span class="handle">hima72_25</span></a></li>
+      <li><a class="pill" href="https://www.tiktok.com/@hima7225">TikTok<span class="handle">@hima7225</span></a></li>
+      <li><a class="pill" href="https://www.instagram.com/hima7225/">Instagram<span class="handle">hima7225</span></a></li>
+      <li><a class="pill" href="https://sixfonia.com/members/hima72">シクフォニ公式<span class="handle">sixfonia.com</span></a></li>
+    </ul>
+    <ul class="tags">
+      <li class="tag">#72ろぐ<small>日常・エゴサ</small></li>
+      <li class="tag">#72あーと<small>ファンアート</small></li>
+      <li class="tag">#72らいぶ<small>配信</small></li>
+      <li class="tag">#暇72切り抜き<small>切り抜き</small></li>
+    </ul>
+  </section>
+
+  <footer>
+    <h2>About this page</h2>
+    <p>
+      これは<strong>非公式のファンメイドまとめ</strong>です。公式が発表したものではありません。
+      内容は2026年9月18日時点で公開されている情報にもとづいています。
+    </p>
+    <h2>Sources</h2>
+    <ul>
+      <li>シクフォニ公式サイト（メンバーページ／インフォメーション／ライブ情報）</li>
+      <li>YOUTH TIME JAPAN project web「シクフォニにインタビュー！」（2026年4月10日）およびツアーレポート（2026年5月7日）</li>
+      <li>サンケイスポーツ デビュー3周年インタビュー全文</li>
+      <li>アニメ！アニメ！／リスアニ！ 2ndツアー『RAGE』ファイナル公演オフィシャルレポート</li>
+      <li>PR TIMES（株式会社Noark）プレスリリース</li>
+      <li>Wikipedia「シクフォニ」、pixiv百科事典「暇72」</li>
+      <li>本人のX（@hima72_25 / @hima72_2nd）投稿</li>
+    </ul>
+    <p>
+      引用のうち「要旨」と付したものは、発言の趣旨をまとめたもので一字一句の再現ではありません。
+      声真似レパートリーや名前の由来など一部の記載はファン百科事典由来のため、公式発表とは異なる場合があります。
+    </p>
+  </footer>
+
+</div>
