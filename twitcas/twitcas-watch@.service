@@ -1,0 +1,25 @@
+# 監視の常駐用 systemd テンプレート。user_id を %i に渡す。
+#
+#   mkdir -p ~/.config/systemd/user
+#   cp twitcas-watch@.service ~/.config/systemd/user/
+#   cp watch.sh ~/bin/twitcas-watch.sh && chmod +x ~/bin/twitcas-watch.sh
+#   systemctl --user daemon-reload
+#   systemctl --user enable --now twitcas-watch@<user_id>.service
+#   sudo loginctl enable-linger $USER   # ログアウトしても動かすため
+#
+#   ログ: journalctl --user -u twitcas-watch@<user_id> -f
+[Unit]
+Description=TwitCasting auto recorder for %i
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+Environment=TWITCAS_OUTDIR=%h/twitcas
+Environment=TWITCAS_INTERVAL=30
+ExecStart=%h/bin/twitcas-watch.sh %i
+Restart=always
+RestartSec=30
+
+[Install]
+WantedBy=default.target
