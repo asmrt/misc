@@ -7,6 +7,8 @@
 #   systemctl --user enable --now twitcas-watch@<user_id>.service
 #   sudo loginctl enable-linger $USER   # ログアウトしても動かすため
 #
+# 追いたい配信者が複数いるなら、user_id ぶん enable すればよい。
+#
 #   ログ: journalctl --user -u twitcas-watch@<user_id> -f
 [Unit]
 Description=TwitCasting auto recorder for %i
@@ -17,6 +19,11 @@ Wants=network-online.target
 Type=simple
 Environment=TWITCAS_OUTDIR=%h/twitcas
 Environment=TWITCAS_INTERVAL=30
+# 配信開始/録画完了をスマホに飛ばすなら（ntfy.sh か Discord の Webhook URL）
+#Environment=TWITCAS_NOTIFY_URL=https://ntfy.sh/your-topic-name
+# 合言葉つき配信・限定配信を録るなら
+#Environment=TWITCAS_PASSWORD=xxxx
+#Environment=TWITCAS_EXTRA_ARGS=--http-cookie keyword=value
 ExecStart=%h/bin/twitcas-watch.sh %i
 Restart=always
 RestartSec=30
