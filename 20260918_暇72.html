@@ -246,6 +246,8 @@
   }
   .weapon p { margin: 0; font-size: 0.95rem; line-height: 1.9; color: var(--ink); }
   .weapon ul { margin: 0; padding-inline-start: 1.1em; font-size: 0.9rem; color: var(--ink-soft); line-height: 1.85; }
+  .weapon .srcline { margin: -2px 0 0; }
+  .weapon .srcline .cite { margin-inline-start: 0; }
 
   /* ---------- quotes ---------- */
   .quotes { display: flex; flex-direction: column; gap: 22px; }
@@ -268,7 +270,37 @@
     font-size: 0.76rem;
     letter-spacing: 0.12em;
     color: var(--ink-soft);
+    line-height: 1.8;
   }
+  figure.q figcaption a {
+    color: var(--accent-text);
+    text-decoration: underline;
+    text-decoration-color: color-mix(in srgb, var(--accent-text) 40%, transparent);
+  }
+  figure.q figcaption a:hover { text-decoration-color: currentColor; }
+  figure.q figcaption a::after { content: " \2197"; font-size: 0.9em; }
+  figure.q figcaption .unverified {
+    display: inline-block;
+    margin-inline-start: 0.6em;
+    padding: 1px 7px;
+    border: 1px solid var(--line);
+    border-radius: 2px;
+    font-size: 0.92em;
+    letter-spacing: 0.08em;
+    color: var(--ink-soft);
+  }
+
+  .cite {
+    font-family: var(--font-util);
+    font-size: 0.74rem;
+    letter-spacing: 0.08em;
+    white-space: nowrap;
+    margin-inline-start: 0.5em;
+    text-decoration: none;
+    color: var(--ink-soft);
+    border-bottom: 1px solid var(--line);
+  }
+  .cite:hover { color: var(--accent-text); border-bottom-color: currentColor; }
   .note {
     margin: 22px 0 0;
     padding: 14px 16px;
@@ -349,7 +381,8 @@
     margin: 0 0 10px;
   }
   footer ul { margin: 0 0 20px; padding-inline-start: 1.2em; }
-  footer li { margin-bottom: 3px; }
+  footer li { margin-bottom: 5px; }
+  footer li a { overflow-wrap: anywhere; }
   footer p { margin: 0 0 10px; max-width: 52em; }
 
   @media (prefers-reduced-motion: reduce) {
@@ -393,7 +426,7 @@
       <dt>肩書き</dt><dd>声真似ゲーマー歌い手VTuber</dd>
       <dt>所属</dt><dd>シクフォニ（2022年8月12日結成／6人組）</dd>
       <dt>活動歴</dt><dd>2013年ごろ〜（YouTubeチャンネル開設は2014年1月）</dd>
-      <dt>チャンネル</dt><dd>登録者 約47.5万人／総再生 3.1億回超</dd>
+      <dt>チャンネル</dt><dd>登録者 約47.5万人／総再生 3.1億回超<a class="cite" href="https://www.youtube.com/@hima72">出典</a></dd>
     </dl>
   </section>
 
@@ -412,6 +445,7 @@
           <li>伊黒小芭内（鬼滅の刃）</li>
           <li>イヤミ／ダヨーン／デカパン（おそ松さん）</li>
         </ul>
+        <p class="srcline"><a class="cite" href="https://dic.pixiv.net/a/%E6%9A%8772">出典：pixiv百科事典</a></p>
       </article>
       <article class="weapon">
         <p class="kicker">02 — Song</p>
@@ -446,24 +480,25 @@
     <div class="quotes">
       <figure class="q">
         <blockquote>「『RAGE』を通して、"俺たちこういう怒りを抱いて活動してきて、ここまで頑張ってきたんだな"というのを再確認することができたと思います」</blockquote>
-        <figcaption>2ndシングル『RAGE』インタビュー（YOUTH TIME JAPAN project／2026年4月）</figcaption>
+        <figcaption>2026年4月10日 ─ <a href="https://www.ytjp.jp/2026/04/10/coverstory-sixfonia">YOUTH TIME JAPAN project web「シクフォニにインタビュー！ 男子高校生の日常のようなシクフォニの魅力と、新曲『RAGE』の想いに迫る！」</a></figcaption>
       </figure>
       <figure class="q">
         <blockquote>バズったわけじゃないから、一歩ずつ、活動している規模に見合う人間になってきている。<br>前より、思ってることを言いやすくなった。</blockquote>
-        <figcaption>デビュー3周年インタビュー（サンケイスポーツ）より要旨</figcaption>
+        <figcaption>2025年8月15日 ─ <a href="https://sanspo.com/article/20250815-MFVJQWQ4TNKA7B6RCNNJEIV5EU/">サンケイスポーツ「【インタビュー全文】デビュー3周年のシクフォニ、全員一致の標的…つかみたいのは「てっぺんでしょ！」」</a>より要旨</figcaption>
       </figure>
       <figure class="q">
         <blockquote>「やりたいことは色々あるけど、ありすぎて動けないから一旦寝る。」を72年間繰り返した男</blockquote>
-        <figcaption>本人のポスト（自虐）より</figcaption>
+        <figcaption>本人のポスト（自虐）─ <a href="https://x.com/hima72_25">X @hima72_25</a><span class="unverified">個別ポストのURL未特定</span></figcaption>
       </figure>
       <figure class="q">
         <blockquote>ヘイトは俺に向けて、仲良くしてください。</blockquote>
-        <figcaption>リスナー間の空気を気にしたときのポストより要旨</figcaption>
+        <figcaption>本人のポストより要旨 ─ <a href="https://x.com/hima72_25">X @hima72_25</a><span class="unverified">個別ポストのURL未特定</span></figcaption>
       </figure>
     </div>
     <p class="note">
-      顔出しについては「顔を出したくないし、目立ちたくもない」と明言。尖ったグループの急先鋒として悪ノリを引っ張る一方、
+      顔出しはせず、アバターで活動するスタイル。尖ったグループの急先鋒として悪ノリを引っ張る一方、
       場が荒れれば自分から仲裁に入る。この振れ幅がそのまま人柄だと思う。
+      <span class="mono">（本人のポストからの見立て／<a href="https://x.com/hima72_25">X @hima72_25</a>）</span>
     </p>
   </section>
 
@@ -479,27 +514,27 @@
       </li>
       <li>
         <span class="tl-date">2022.08.12</span>
-        <p class="tl-body">オーディション『Project Nova Create』を経て <strong>シクフォニ結成</strong>。赤担当に。グループ名は SIX＋SINFONIA の造語。</p>
+        <p class="tl-body">オーディション『Project Nova Create』を経て <strong>シクフォニ結成</strong>。赤担当に。グループ名は SIX＋SINFONIA の造語。<a class="cite" href="https://ja.wikipedia.org/wiki/%E3%82%B7%E3%82%AF%E3%83%95%E3%82%A9%E3%83%8B">出典</a></p>
       </li>
       <li>
         <span class="tl-date">2022.10 — 2024.07</span>
-        <p class="tl-body">歌い手事務所「VOISING」に所属。2024年7月にグループの意向で卒業。</p>
+        <p class="tl-body">歌い手事務所「VOISING」に所属。2024年7月にグループの意向で卒業。<a class="cite" href="https://dic.pixiv.net/a/%E6%9A%8772">出典</a></p>
       </li>
       <li>
         <span class="tl-date">2025.08</span>
-        <p class="tl-body">デビュー<strong>3周年</strong>。記念グッズ展開、スポーツ紙初インタビューなど活動が一段広がる。</p>
+        <p class="tl-body">デビュー<strong>3周年</strong>。記念グッズ展開、スポーツ紙初インタビューなど活動が一段広がる。<a class="cite" href="https://sanspo.com/article/20250815-MFVJQWQ4TNKA7B6RCNNJEIV5EU/">出典</a></p>
       </li>
       <li>
         <span class="tl-date">2026.04.08</span>
-        <p class="tl-body">2ndシングル<strong>『RAGE』</strong>発売。4月10日からは全国約600校の高校で校内放送も実施。</p>
+        <p class="tl-body">2ndシングル<strong>『RAGE』</strong>発売。4月10日からは全国約600校の高校で校内放送も実施。<a class="cite" href="https://373news.com/lifestyle/info/pr_times/detail/000000051.000147694.html">出典</a></p>
       </li>
       <li>
         <span class="tl-date">2026.04.25 — 05.06</span>
-        <p class="tl-body"><strong>SIXFONIA 2nd Live Tour -RAGE-</strong>。福岡国際センター／ゼビオアリーナ仙台／Kアリーナ横浜の3都市6公演を、約5万人動員で完走。</p>
+        <p class="tl-body"><strong>SIXFONIA 2nd Live Tour -RAGE-</strong>。福岡国際センター／ゼビオアリーナ仙台／Kアリーナ横浜の3都市6公演を、約5万人動員で完走。<a class="cite" href="https://animeanime.jp/article/2026/05/08/98747.html">出典</a></p>
       </li>
       <li>
         <span class="tl-date">2026.10.17 — 10.18</span>
-        <p class="tl-body">ぴあアリーナMM公演を予定。</p>
+        <p class="tl-body">ぴあアリーナMM公演を予定。<a class="cite" href="https://sixfonia.com/live_info">出典</a></p>
       </li>
     </ol>
   </section>
@@ -534,17 +569,23 @@
     </p>
     <h2>Sources</h2>
     <ul>
-      <li>シクフォニ公式サイト（メンバーページ／インフォメーション／ライブ情報）</li>
-      <li>YOUTH TIME JAPAN project web「シクフォニにインタビュー！」（2026年4月10日）およびツアーレポート（2026年5月7日）</li>
-      <li>サンケイスポーツ デビュー3周年インタビュー全文</li>
-      <li>アニメ！アニメ！／リスアニ！ 2ndツアー『RAGE』ファイナル公演オフィシャルレポート</li>
-      <li>PR TIMES（株式会社Noark）プレスリリース</li>
-      <li>Wikipedia「シクフォニ」、pixiv百科事典「暇72」</li>
-      <li>本人のX（@hima72_25 / @hima72_2nd）投稿</li>
+      <li>シクフォニ公式サイト ─
+        <a href="https://sixfonia.com/members/hima72">メンバーページ</a>／<a href="https://sixfonia.com/information">インフォメーション</a>／<a href="https://sixfonia.com/live_info">ライブ情報</a></li>
+      <li><a href="https://www.ytjp.jp/2026/04/10/coverstory-sixfonia">YOUTH TIME JAPAN project web「シクフォニにインタビュー！ 男子高校生の日常のようなシクフォニの魅力と、新曲『RAGE』の想いに迫る！」</a>（2026年4月10日）</li>
+      <li><a href="https://www.ytjp.jp/2026/05/07/live-sixfonia">YOUTH TIME JAPAN project web「史上最大規模約5万人動員の2ndツアー『RAGE』完走」</a>（2026年5月7日）</li>
+      <li><a href="https://sanspo.com/article/20250815-MFVJQWQ4TNKA7B6RCNNJEIV5EU/">サンケイスポーツ「【インタビュー全文】デビュー3周年のシクフォニ、全員一致の標的…つかみたいのは「てっぺんでしょ！」」</a>（2025年8月15日）</li>
+      <li><a href="https://animeanime.jp/article/2026/05/08/98747.html">アニメ！アニメ！「約5万人動員の2ndツアー完走！ファイナル公演ライブレポート」</a>（2026年5月8日）</li>
+      <li><a href="https://www.lisani.jp/0000308336/">リスアニ！「2ndツアー『RAGE』ファイナル公演 オフィシャルレポート」</a></li>
+      <li><a href="https://373news.com/lifestyle/info/pr_times/detail/000000051.000147694.html">PR TIMES（株式会社Noark）「2ndシングル『RAGE』2026年4月8日発売」</a></li>
+      <li><a href="https://prtimes.jp/main/html/rd/p/000000025.000147694.html">PR TIMES（株式会社Noark）「デビュー3周年を前に新ビジュアルを先行公開」</a></li>
+      <li><a href="https://eeo.today/media/2026/02/02/310115/">eeo Media「2ndライブツアー『RAGE』が4月より全国3都市で開催決定」</a>（2026年2月2日）</li>
+      <li><a href="https://ja.wikipedia.org/wiki/%E3%82%B7%E3%82%AF%E3%83%95%E3%82%A9%E3%83%8B">Wikipedia「シクフォニ」</a>／<a href="https://dic.pixiv.net/a/%E6%9A%8772">pixiv百科事典「暇72」</a></li>
+      <li>本人のX ─ <a href="https://x.com/hima72_25">@hima72_25</a>／<a href="https://x.com/hima72_2nd">@hima72_2nd</a></li>
     </ul>
     <p>
       引用のうち「要旨」と付したものは、発言の趣旨をまとめたもので一字一句の再現ではありません。
-      声真似レパートリーや名前の由来など一部の記載はファン百科事典由来のため、公式発表とは異なる場合があります。
+      本人のXポストからの引用は、個別ポストのURLを特定できなかったためアカウントへのリンクにとどめています。
+      声真似レパートリーなど一部の記載はファン百科事典由来のため、公式発表とは異なる場合があります。
     </p>
   </footer>
 
