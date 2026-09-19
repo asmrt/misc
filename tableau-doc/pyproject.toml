@@ -1,0 +1,26 @@
+[project]
+name = "twbdoc"
+version = "0.1.0"
+description = "Tableau workbook (.twb) から仕様書・定義書(Markdown)と単一HTMLビューアを生成するツール"
+requires-python = ">=3.10"
+dependencies = []
+# Phase A（Markdown仕様書・単一HTMLビューア）は標準ライブラリのみで動作する。
+
+[project.optional-dependencies]
+# Phase B（DB直結の実データレポート）でのみ必要
+report = [
+    "sqlalchemy>=2.0",
+]
+dev = [
+    "pytest>=8.0",
+]
+
+[project.scripts]
+twbdoc = "twbdoc.cli:main"
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+include = ["twbdoc*"]
